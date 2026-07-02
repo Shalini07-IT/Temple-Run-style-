@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Sprint Runner — Endless 3D Runner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background layer (behind everything) -->
+  <div id="bg-glow"></div>
+
+  <div id="game-container">
+
+    <!-- Main game canvas: the pseudo-3D road, player, obstacles, coins, particles -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD: always visible during play -->
+    <div id="hud">
+      <div class="hud-pill" id="score-pill">
+        <span class="hud-icon">🏁</span>
+        <span id="score-value">0</span>
+      </div>
+      <div class="hud-pill" id="coin-pill">
+        <span class="hud-icon">🪙</span>
+        <span id="coin-value">0</span>
+      </div>
+      <div class="hud-pill" id="best-pill">
+        <span class="hud-icon">👑</span>
+        <span id="best-value">0</span>
+      </div>
+      <button id="pause-btn" class="icon-btn" title="Pause (P)">⏸</button>
+    </div>
+
+    <!-- Speed streaks / combo popup layer -->
+    <div id="fx-layer"></div>
+
+    <!-- START SCREEN -->
+    <div id="start-screen" class="screen">
+      <div class="panel">
+        <h1 class="title">SPRINT<span>RUNNER</span></h1>
+        <p class="subtitle">Dodge. Jump. Slide. Survive the sprint.</p>
+
+        <div class="controls-grid">
+          <div class="control-card">
+            <div class="key">←→</div>
+            <div class="label">Change Lane</div>
+          </div>
+          <div class="control-card">
+            <div class="key">↑</div>
+            <div class="label">Jump</div>
+          </div>
+          <div class="control-card">
+            <div class="key">↓</div>
+            <div class="label">Slide</div>
+          </div>
+          <div class="control-card">
+            <div class="key">P</div>
+            <div class="label">Pause</div>
+          </div>
+        </div>
+        <p class="subtitle small">On mobile: swipe to move, jump &amp; slide</p>
+
+        <button id="start-btn" class="primary-btn">▶ Start Run</button>
+        <div class="best-line">Best Score: <span id="start-best">0</span></div>
+      </div>
+    </div>
+
+    <!-- PAUSE SCREEN -->
+    <div id="pause-screen" class="screen hidden">
+      <div class="panel">
+        <h2 class="title small-title">Paused</h2>
+        <button id="resume-btn" class="primary-btn">▶ Resume</button>
+        <button id="restart-from-pause-btn" class="secondary-btn">⟲ Restart</button>
+        <p class="subtitle small">Press P to resume</p>
+      </div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="gameover-screen" class="screen hidden">
+      <div class="panel">
+        <h2 class="title small-title crash-title">Wipeout!</h2>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-label">Score</div>
+            <div class="stat-value" id="final-score">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Coins</div>
+            <div class="stat-value" id="final-coins">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Best</div>
+            <div class="stat-value" id="final-best">0</div>
+          </div>
+        </div>
+        <div id="new-best-banner" class="new-best hidden">✨ New Best Score! ✨</div>
+        <button id="restart-btn" class="primary-btn">⟲ Run Again</button>
+      </div>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
